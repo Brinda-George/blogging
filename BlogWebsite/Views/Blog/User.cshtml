@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BlogWebsite.Models.BlogTable>
+
+@{
+    ViewBag.Title = "User";
+}
+<h3 class="text-vertical-center" style="padding:40px;">Welcome  @ViewBag.LoginAuthor.</h3>
+<div class="container" style=" width:80%; margin:0 auto;">
+    <center>
+            @foreach (var item in Model)
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-12">
+                            <img src="@Url.Content(item.Impagepath)" style="height:150px; width:180px;" alt="Image" class="img-responsive" />
+                        </div>
+                        <div class="col-md-9 col-sm-12">
+                            <center>
+                                <span style="font-family: 'Baloo Bhaina', cursive; font-size:40px;">
+                                    @Html.ActionLink(item.Titile, "Blog", new { id = item.Blogid }) <br />
+                                </span>
+                                @Html.DisplayFor(model => item.Description).ToString().Substring(0, 100)
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            }
+
+            <p>
+                <a href="@Url.Action("CreateBlog", "Blog")" style="text-decoration: none; font-size:20px; color:gray"><center>Create New Blog</center></a>
+                @*@Html.ActionLink("Create New", "CreateBlog")*@
+            </p>
+
+    </center>
+</div>

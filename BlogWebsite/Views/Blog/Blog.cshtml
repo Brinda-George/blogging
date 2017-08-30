@@ -1,0 +1,39 @@
+﻿@model BlogWebsite.Models.BlogTable
+@using Microsoft.AspNet.Identity
+
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina|Baloo+Tamma" rel="stylesheet">
+
+<div>
+    <div class="container" style="padding:5%;width:80%; margin:0 auto;">
+        <center>
+            <span style="font-family: 'Baloo Bhaina', cursive; font-size:40px;">
+                @Html.DisplayFor(model => model.Titile) <br />
+            </span>
+            <span style="font-family: 'Baloo Bhaina', cursive; font-size:20px;">
+                @ViewBag.Author<br />
+                @Html.DisplayFor(model => model.Date)
+            </span>
+        </center>
+        <br />
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <img src="@Url.Content(Model.Impagepath)" style="height:250px; width:350px;" alt="Image" class="img-responsive" />
+            </div>
+            <div class="col-md-8 col-sm-12">
+                @Html.DisplayFor(model => model.Description)
+            </div>
+        </div>
+    </div>
+    <br />
+    @if (Request.IsAuthenticated)
+    {
+        <a href="@Url.Action("User", "Blog")" style="text-decoration: none; font-size:13px; color:gray"><center>Back</center></a>
+    }
+    else
+    {
+        <a href="@Url.Action("Index", "Blog")" style="text-decoration: none; font-size:13px; color:gray"><center>Back</center></a>
+    }
+
+    @*<a href="@Url.Action("Index", "Blog")" style="text-decoration: none; font-size:13px; color:gray"><center>Back</center></a><br/>
+        <a href="@Url.Action("User", "Blog")" style="text-decoration: none; font-size:13px; color:gray"><center>Back to Account</center></a>*@
+</div>

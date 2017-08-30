@@ -1,0 +1,70 @@
+﻿@model BlogWebsite.Models.RegistrationModel
+
+@{
+    ViewBag.Title = "RegistrationView";
+}
+
+
+@using (Html.BeginForm("Register", "Blog"))
+{
+    <div class="container" style="padding-top:40px; width:350px; margin:0 auto;">
+        <h3><center>Create Your Account</center></h3>
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal" style="background-color:white; border:2px solid groove; padding:20px;">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label style="padding-left:15px">Firstname</label><br />
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label style="padding-left:15px">Lastname</label><br />
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label style="padding-left:15px">Email</label><br />
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label style="padding-left:15px">Password</label><br />
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label style="padding-left:15px">Confirm Password</label><br />
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12 col-md-12">
+                    <input type="submit" value="Create My Account" class="btn btn-default" style="width:100%; background-color: #008CBA; Color:white" />
+                </div>
+            </div>
+        </div>
+        <a href="@Url.Action("Index", "Blog")" style="text-decoration: none; font-size:13px; color:gray"><center>Back</center></a>
+    </div>
+}
+

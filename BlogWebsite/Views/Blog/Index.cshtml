@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BlogWebsite.Models.BlogTable>
+
+<style>
+    .main {
+        background-image: url(../../images/1.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .container {
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
+</style>
+
+
+<header id="top" class="container  header main">
+    <div class="text-vertical-center">
+        <h1 class="no-widows" style="font-family: 'Lobster', cursive; font-size:100px; height:600px; color:#999966; padding-top:200px">Untold Tales</h1>
+    </div>
+</header>
+
+<div class="container" style=" width:60%; margin:0 auto;">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 text-center">
+            <div class="section-title">
+                <h1 style="font-family: 'Lobster', cursive; font-size:50px">Recent Blogs</h1>
+                <hr class="small">
+            </div>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <img src="@Url.Content(item.Impagepath)" style="height:150px; width:280px;" alt="Image" class="img-responsive" />
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <center>
+                            <span style="font-family: 'Baloo Bhaina', cursive; font-size:40px;">
+                                @Html.ActionLink(item.Titile, "Blog", new { id = item.Blogid }) <br />
+                            </span>
+                            @if (item.Description.Length>100)
+                            {
+                                @Html.DisplayFor(model => item.Description).ToString().Substring(0, 100)
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(model => item.Description).ToString()
+                            }
+
+
+                            
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+</div>
+
+
+

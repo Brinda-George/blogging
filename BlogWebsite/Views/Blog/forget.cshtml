@@ -1,0 +1,43 @@
+﻿@model BlogWebsite.Models.ForgetModel
+
+@{
+    ViewBag.Title = "forget";
+}
+
+
+@using (Html.BeginForm("ForgetAction", "Blog"))
+{
+    <div class="container" style="padding-top:100px; width:350px; margin:0 auto;">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal" style="background-color:white; border:1px solid groove; padding:40px;">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label style="padding-left:15px">Email</label><br />
+                @*@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-12 col-md-12">
+                    <input type="submit" value="Login" class="btn btn-default" style="width:100%; background-color: #008CBA; Color:white" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <ul>
+                <li><a href="@Url.Action("Login", "Blog")" style="text-decoration: none; font-size:13px; color:gray">Return to Login</a></li>
+            </ul>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
